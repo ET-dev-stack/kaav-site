@@ -1,0 +1,79 @@
+<title>KAAV</title>
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --fg: #f2f2ef;
+    --muted: #9a9a94;
+    --accent: #d8d2c2;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6vh 6vw;
+  }
+  main {
+    max-width: 560px;
+    text-align: left;
+  }
+  .wordmark {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.5rem 0;
+    color: var(--fg);
+  }
+  .tagline {
+    font-size: 1.05rem;
+    color: var(--accent);
+    margin: 0 0 2rem 0;
+    font-weight: 500;
+  }
+  p.desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 0 2.5rem 0;
+    max-width: 46ch;
+  }
+  .contact {
+    font-size: 0.95rem;
+  }
+  .contact a {
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: 1px solid var(--muted);
+  }
+  .contact a:hover {
+    border-color: var(--fg);
+  }
+  footer {
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+</style>
+<body>
+  <main>
+    <p class="wordmark">KAAV</p>
+    <p class="tagline">A Swedish product development studio.</p>
+    <p class="desc">
+      KAAV builds physical products, software tools, and interactive experiences —
+      from live-performance visuals to hardware experiments. This site is being
+      built out to showcase our work; in the meantime, reach us directly below.
+    </p>
+    <p class="contact">
+      <a href="mailto:hello@kaav.eu">hello@kaav.eu</a>
+    </p>
+    <footer>&copy; <span id="y"></span> KAAV</footer>
+  </main>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
