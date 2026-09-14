@@ -1,12 +1,9 @@
 :root {
-  --bg: #fbf6ef;
-  --bg-card: #ffffff;
-  --fg: #2b241f;
-  --muted: #7c6f63;
-  --accent: #d9663f;
-  --accent-soft: #fcc595;
-  --accent-coral: #f8a087;
-  --line: #eae1d3;
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #6e6e6e;
+  --accent: #0a0a0a;
+  --line: #e6e6e6;
 }
 * { box-sizing: border-box; }
 html, body {
@@ -36,10 +33,10 @@ nav a {
 }
 nav a:hover, nav a.active {
   color: var(--fg);
-  border-color: var(--accent);
+  border-color: var(--fg);
 }
 nav .nav-mark {
-  height: 22px;
+  height: 20px;
   width: auto;
   display: block;
   margin-right: 1.5rem;
@@ -51,23 +48,25 @@ main {
 main.wide {
   max-width: 900px;
 }
+main.centered {
+  max-width: 640px;
+  margin: 4vh auto 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .logo-mark {
-  height: clamp(44px, 8vw, 64px);
+  height: clamp(64px, 14vw, 130px);
   width: auto;
   display: block;
-  margin: 0 0 1.25rem 0;
-}
-.wordmark {
-  font-size: clamp(2.5rem, 8vw, 4rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  margin: 0 0 0.5rem 0;
+  margin: 0 auto 2rem auto;
 }
 .tagline {
   font-size: 1.05rem;
-  color: var(--accent);
+  color: var(--muted);
   margin: 0 0 2rem 0;
-  font-weight: 600;
+  font-weight: 500;
 }
 h1 {
   font-size: 1.8rem;
@@ -75,20 +74,31 @@ h1 {
   margin: 0 0 1.5rem 0;
 }
 h2 {
-  font-size: 1.1rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  margin: 2rem 0 0.75rem 0;
-  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 2.5rem 0 1rem 0;
+  color: var(--muted);
 }
 p {
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--muted);
+  color: var(--fg);
   margin: 0 0 1.25rem 0;
   max-width: 56ch;
 }
+main.centered p {
+  max-width: 52ch;
+}
 p.lead {
   color: var(--fg);
+}
+p.quote {
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 2rem 0;
 }
 a {
   color: var(--fg);
@@ -98,67 +108,58 @@ a {
   text-decoration: none;
 }
 .contact a:hover, .desc a:hover {
-  border-color: var(--accent);
+  border-color: var(--fg);
 }
 .placeholder {
-  color: var(--accent);
+  color: var(--muted);
   font-style: italic;
 }
 
-/* Brand grid */
-.brand-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0 2.5rem 0;
-  max-width: none;
+/* Co-developed hardware section */
+.hardware-line {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 0 1.5rem 0;
 }
-.brand-tile {
+.logo-row {
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 1.25rem;
-  text-decoration: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 0 0 2.5rem 0;
+}
+.logo-row a, .logo-row span {
+  display: flex;
+  align-items: center;
   color: var(--fg);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
 }
-a.brand-tile:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(217, 102, 63, 0.12);
-  border-color: var(--accent-coral);
+.logo-row a:hover {
+  opacity: 1;
 }
-.brand-tile .brand-logo {
-  height: 32px;
+.logo-row img {
+  height: 28px;
   width: auto;
-  max-width: 100%;
+  max-width: 140px;
   object-fit: contain;
-  object-position: left;
+  filter: grayscale(1) contrast(1.05);
 }
-.brand-tile .brand-name {
+.logo-row .brand-fallback {
   font-weight: 700;
-  font-size: 1rem;
-  margin: 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
 }
-.brand-tile .brand-desc {
-  font-size: 0.88rem;
-  line-height: 1.5;
+.logo-row span.brand-fallback {
+  border-bottom: 1px solid transparent;
+}
+.aside-note {
+  font-size: 0.85rem;
   color: var(--muted);
-  margin: 0;
-}
-.brand-tile .brand-tag {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  font-weight: 600;
-}
-.brand-tile.soon {
-  background: transparent;
-  border-style: dashed;
-  color: var(--muted);
+  margin-top: -0.5rem;
 }
 
 footer {
@@ -167,6 +168,12 @@ footer {
   border-top: 1px solid var(--line);
   font-size: 0.8rem;
   color: var(--muted);
+}
+main.centered footer {
+  margin-top: 4rem;
+}
+body.home footer {
+  text-align: center;
 }
 footer a {
   color: var(--muted);

@@ -1,28 +1,22 @@
-// One entry per brand tile on the homepage. To add a brand:
-// 1. Drop its logo file into public/logos/ (SVG or PNG, transparent background works best)
-// 2. Add an entry below with the matching "logo" path
-// If you don't have a logo yet, leave logo: null — the tile falls back to showing the name as text.
+// Hardware KAAV has co-developed, shown as a logo row on the homepage.
+// To add one: drop its logo file into public/logos/ (SVG or PNG, transparent
+// background), then add an entry below. Leave logo: null to show the name as
+// plain text until you have a logo file. Leave url: null if it has no public
+// site to link to.
 window.BRANDS = [
   {
-    name: "Ass Savers",
-    url: "https://ass-savers.com",
-    logo: null,
-    tag: "Product",
-    desc: "Clip-on bicycle mudguards, designed in Gothenburg and sold worldwide."
+    name: "Creatables",
+    url: null,
+    logo: null
   },
   {
     name: "Strawbees",
     url: "https://strawbees.com",
-    logo: null,
-    tag: "Product",
-    desc: "Construction toys and STEAM kits for creative building and learning."
+    logo: null
   },
-  // Add the rest here, same shape, e.g.:
-  // {
-  //   name: "Creatables",
-  //   url: "https://example.com",
-  //   logo: "logos/creatables.svg",
-  //   tag: "Product",
-  //   desc: "One or two lines about what it is."
-  // },
+  {
+    name: "Ass Savers",
+    url: "https://ass-savers.com",
+    logo: null
+  }
 ];

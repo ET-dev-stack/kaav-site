@@ -4,63 +4,47 @@
 <title>KAAV</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home">
   <nav>
-    <a href="index.html" class="active"><img src="logo.svg" alt="KAAV" class="nav-mark"></a>
+    <a href="index.html" class="active"><img src="logo-bw.svg" alt="KAAV" class="nav-mark"></a>
     <a href="about.html">About</a>
     <a href="privacy.html">Privacy</a>
   </nav>
-  <main class="wide">
-    <img src="logo.svg" alt="KAAV" class="logo-mark">
-    <p class="tagline">A Swedish product development studio.</p>
-    <p class="desc">
-      KAAV builds physical products, software tools, and interactive experiences —
-      from live-performance visuals to hardware experiments. Below are some of the
-      things we've built.
+  <main class="centered">
+    <img src="logo-bw.svg" alt="KAAV" class="logo-mark">
+    <p class="lead">
+      KAAV develops brands, physical products, software and interactive
+      experiences — from live-performance visuals to hardware experiments.
+      We love taking something from prototype to finished brand and company
+      with a soul and great story.
     </p>
 
-    <h2>What we've built</h2>
-    <div class="brand-grid" id="brand-grid"></div>
+    <h2>Some of the hardware KAAV has co-developed</h2>
+    <div class="logo-row" id="logo-row"></div>
+    <p class="aside-note">...and a wellness venture — coming soon.</p>
 
-    <p class="contact">
-      <a href="mailto:hello@kaav.eu">hello@kaav.eu</a>
-    </p>
+    <p class="contact"><a href="mailto:hello@kaav.eu">hello@kaav.eu</a></p>
   </main>
   <footer>&copy; <span id="y"></span> KAAV</footer>
   <script src="brands.js"></script>
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    const grid = document.getElementById('brand-grid');
+    const row = document.getElementById('logo-row');
 
-    function renderTile(b) {
-      const el = document.createElement(b.url ? 'a' : 'div');
-      el.className = 'brand-tile';
+    function renderItem(b) {
+      const el = document.createElement(b.url ? 'a' : 'span');
       if (b.url) {
         el.href = b.url;
         el.target = '_blank';
         el.rel = 'noopener';
       }
-      const logoHtml = b.logo
-        ? `<img class="brand-logo" src="${b.logo}" alt="${b.name}">`
-        : `<p class="brand-name">${b.name}</p>`;
-      el.innerHTML = `
-        ${logoHtml}
-        <p class="brand-desc">${b.desc}</p>
-        ${b.tag ? `<span class="brand-tag">${b.tag}</span>` : ''}
-      `;
+      el.innerHTML = b.logo
+        ? `<img src="${b.logo}" alt="${b.name}">`
+        : `<span class="brand-fallback">${b.name}</span>`;
       return el;
     }
 
-    (window.BRANDS || []).forEach(b => grid.appendChild(renderTile(b)));
-
-    // Wellness venture — name not public yet
-    const soon = document.createElement('div');
-    soon.className = 'brand-tile soon';
-    soon.innerHTML = `
-      <p class="brand-name">Coming soon</p>
-      <p class="brand-desc">A new wellness venture — more soon.</p>
-    `;
-    grid.appendChild(soon);
+    (window.BRANDS || []).forEach(b => row.appendChild(renderItem(b)));
   </script>
 </body>
