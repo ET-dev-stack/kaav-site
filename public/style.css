@@ -1,9 +1,12 @@
 :root {
-  --bg: #0e0e0e;
-  --fg: #f2f2ef;
-  --muted: #9a9a94;
-  --accent: #d8d2c2;
-  --line: #2a2a27;
+  --bg: #fbf6ef;
+  --bg-card: #ffffff;
+  --fg: #2b241f;
+  --muted: #7c6f63;
+  --accent: #d9663f;
+  --accent-soft: #fcc595;
+  --accent-coral: #f8a087;
+  --line: #eae1d3;
 }
 * { box-sizing: border-box; }
 html, body {
@@ -22,6 +25,8 @@ body {
 nav {
   margin-bottom: 4vh;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
 }
 nav a {
   color: var(--muted);
@@ -31,11 +36,26 @@ nav a {
 }
 nav a:hover, nav a.active {
   color: var(--fg);
-  border-color: var(--muted);
+  border-color: var(--accent);
+}
+nav .nav-mark {
+  height: 22px;
+  width: auto;
+  display: block;
+  margin-right: 1.5rem;
 }
 main {
-  max-width: 620px;
+  max-width: 680px;
   flex: 1;
+}
+main.wide {
+  max-width: 900px;
+}
+.logo-mark {
+  height: clamp(44px, 8vw, 64px);
+  width: auto;
+  display: block;
+  margin: 0 0 1.25rem 0;
 }
 .wordmark {
   font-size: clamp(2.5rem, 8vw, 4rem);
@@ -47,7 +67,7 @@ main {
   font-size: 1.05rem;
   color: var(--accent);
   margin: 0 0 2rem 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 h1 {
   font-size: 1.8rem;
@@ -78,12 +98,69 @@ a {
   text-decoration: none;
 }
 .contact a:hover, .desc a:hover {
-  border-color: var(--fg);
+  border-color: var(--accent);
 }
 .placeholder {
-  color: #b8894a;
+  color: var(--accent);
   font-style: italic;
 }
+
+/* Brand grid */
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem 0;
+  max-width: none;
+}
+.brand-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: var(--fg);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+a.brand-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(217, 102, 63, 0.12);
+  border-color: var(--accent-coral);
+}
+.brand-tile .brand-logo {
+  height: 32px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: left;
+}
+.brand-tile .brand-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0;
+}
+.brand-tile .brand-desc {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+.brand-tile .brand-tag {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+}
+.brand-tile.soon {
+  background: transparent;
+  border-style: dashed;
+  color: var(--muted);
+}
+
 footer {
   margin-top: 3rem;
   padding-top: 1.5rem;

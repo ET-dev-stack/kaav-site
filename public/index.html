@@ -6,22 +6,61 @@
 </head>
 <body>
   <nav>
-    <a href="index.html" class="active">KAAV</a>
+    <a href="index.html" class="active"><img src="logo.svg" alt="KAAV" class="nav-mark"></a>
     <a href="about.html">About</a>
     <a href="privacy.html">Privacy</a>
   </nav>
-  <main>
-    <p class="wordmark">KAAV</p>
+  <main class="wide">
+    <img src="logo.svg" alt="KAAV" class="logo-mark">
     <p class="tagline">A Swedish product development studio.</p>
     <p class="desc">
       KAAV builds physical products, software tools, and interactive experiences —
-      from live-performance visuals to hardware experiments. This site is being
-      built out to showcase our work; in the meantime, reach us directly below.
+      from live-performance visuals to hardware experiments. Below are some of the
+      things we've built.
     </p>
+
+    <h2>What we've built</h2>
+    <div class="brand-grid" id="brand-grid"></div>
+
     <p class="contact">
       <a href="mailto:hello@kaav.eu">hello@kaav.eu</a>
     </p>
   </main>
   <footer>&copy; <span id="y"></span> KAAV</footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script src="brands.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const grid = document.getElementById('brand-grid');
+
+    function renderTile(b) {
+      const el = document.createElement(b.url ? 'a' : 'div');
+      el.className = 'brand-tile';
+      if (b.url) {
+        el.href = b.url;
+        el.target = '_blank';
+        el.rel = 'noopener';
+      }
+      const logoHtml = b.logo
+        ? `<img class="brand-logo" src="${b.logo}" alt="${b.name}">`
+        : `<p class="brand-name">${b.name}</p>`;
+      el.innerHTML = `
+        ${logoHtml}
+        <p class="brand-desc">${b.desc}</p>
+        ${b.tag ? `<span class="brand-tag">${b.tag}</span>` : ''}
+      `;
+      return el;
+    }
+
+    (window.BRANDS || []).forEach(b => grid.appendChild(renderTile(b)));
+
+    // Wellness venture — name not public yet
+    const soon = document.createElement('div');
+    soon.className = 'brand-tile soon';
+    soon.innerHTML = `
+      <p class="brand-name">Coming soon</p>
+      <p class="brand-desc">A new wellness venture — more soon.</p>
+    `;
+    grid.appendChild(soon);
+  </script>
 </body>
